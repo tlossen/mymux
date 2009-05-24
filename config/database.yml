@@ -1,0 +1,18 @@
+local_db: &local_db
+  adapter: mysql
+  username: rails
+  password: rails
+  encoding: utf8
+  socket: /tmp/mysql.sock
+
+development:
+  database: mymux_<%= ENV['TENANT'] || 'default' %>
+  <<: *local_db
+
+test:
+  database: mymux_test
+  <<: *local_db
+
+production:
+  database: mymux_default
+  <<: *local_db
