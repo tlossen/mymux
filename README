@@ -1,1 +1,4 @@
-sample rails app which demonstrates database multiplexing.
+sample rails app which demonstrates database multiplexing,
+as explained in the following talk:
+
+http://www.slideshare.net/tim.lossen.de/multi-tenancy-made-easy
