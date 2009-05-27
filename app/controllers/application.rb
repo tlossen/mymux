@@ -1,13 +1,14 @@
 class ApplicationController < ActionController::Base
 
-  helper :all
-
   before_filter :set_tenant
 
 private
 
   def set_tenant
-    ActiveRecord::Base.connection.execute("use mymux_#{params[:tenant]};")
+    db = "mymux_" + params[:tenant]
+    ActiveRecord::Base.connection.execute("use #{db};")
+  rescue
+    render :status => 403, :inline => "invalid: " + params[:tenant]
   end
 
 end
